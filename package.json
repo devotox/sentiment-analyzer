@@ -22,6 +22,8 @@
     "google-finance": "0.1.9",
     "google-stocks": "1.0.1",
     "indico.io": "0.10.5",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1",
     "request": "2.81.0",
     "retext": "5.0.0",
     "retext-sentiment": "4.0.0",
