@@ -4,31 +4,32 @@
   "description": "Sentiment Analyzer",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/",
-    "postrelease": "npm publish",
-    "release": "npm version patch",
-    "release-patch": "npm version patch",
-    "release-minor": "npm version minor",
-    "release-major": "npm version major",
-    "preversion": "sidekick run && npm test",
-    "postversion": "git push && git push --tags"
+	"test": "mocha tests/",
+	"postrelease": "npm publish",
+	"release": "npm version patch",
+	"release-patch": "npm version patch",
+	"release-minor": "npm version minor",
+	"release-major": "npm version major",
+	"preversion": "sidekick run && npm test",
+	"postversion": "git push && git push --tags"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "axios": "0.15.3",
-    "bluebird": "3.5.0",
-    "cheerio": "^0.22.0",
-    "google-finance": "0.1.9",
-    "google-stocks": "1.0.1",
-    "indico.io": "0.10.5",
-    "retext": "5.0.0",
-    "retext-sentiment": "4.0.0",
-    "textversionjs": "1.0.2",
-    "yahoo-finance": "0.2.16"
+	"axios": "0.15.3",
+	"bluebird": "3.5.0",
+	"cheerio": "0.22.0",
+	"google-finance": "0.1.9",
+	"google-stocks": "1.0.1",
+	"indico.io": "0.10.5",
+	"request": "2.81.0",
+	"retext": "5.0.0",
+	"retext-sentiment": "4.0.0",
+	"textversionjs": "1.0.2",
+	"yahoo-finance": "0.2.16"
   },
   "devDependencies": {
-    "mocha": "3.2.0",
-    "sidekick": "1.12.2"
+	"mocha": "3.2.0",
+	"sidekick": "1.12.2"
   }
 }

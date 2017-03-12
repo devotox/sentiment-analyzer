@@ -1,13 +1,15 @@
-const api = require('./api');
-const news = require('./news');
-const search = require('./search');
-const stocks = require('./stocks');
-const sentiment = require('./sentiment');
+const api = require('./lib/api');
+const news = require('./lib/news');
+const search = require('./lib/search');
+const stocks = require('./lib/stocks');
+const sentiment = require('./lib/sentiment');
+
+console.log(sentiment, stocks, search);
 
 module.exports = {
-	api,
-	news,
+	sentiment,
 	search,
 	stocks,
-	sentiment
+	news,
+	api
 };
