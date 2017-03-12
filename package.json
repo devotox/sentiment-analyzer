@@ -1,0 +1,23 @@
+{
+  "name": "sentiment",
+  "version": "0.0.1",
+  "description": "Sentiment Analyzer",
+  "main": "index.js",
+  "scripts": {
+	"test": "mocha tests/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+
+	"bluebird": "3.4.6",
+	"axios": "0.15.2",
+	"textversionjs": "1.0.2",
+	"google-finance": "0.1.7",
+	"google-stocks": "0.2.0",
+	"indico.io": "0.10.5",
+	"retext": "4.0.0",
+	"retext-sentiment": "2.0.2",
+	"yahoo-finance": "0.2.14"
+  }
+}
