@@ -16,18 +16,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-	"axios": "0.15.2",
-	"bluebird": "3.4.6",
+	"axios": "0.15.3",
+	"bluebird": "3.5.0",
 	"cheerio": "^0.22.0",
-	"google-finance": "0.1.7",
-	"google-stocks": "0.2.0",
+	"google-finance": "0.1.9",
+	"google-stocks": "1.0.1",
 	"indico.io": "0.10.5",
-	"retext": "4.0.0",
-	"retext-sentiment": "2.0.2",
+	"retext": "5.0.0",
+	"retext-sentiment": "4.0.0",
 	"textversionjs": "1.0.2",
-	"yahoo-finance": "0.2.14"
+	"yahoo-finance": "0.2.16"
   },
   "devDependencies": {
-	"mocha": "^3.2.0"
+	"mocha": "3.2.0",
+	"sidekick": "1.12.2"
   }
 }
