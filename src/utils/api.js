@@ -1,3 +1,5 @@
+//@flow
+
 const axios = require('axios');
 const Promise = require('bluebird');
 
@@ -6,7 +8,8 @@ const methods = [
 	'delete', 'head', 'options'
 ];
 
-const request = (method, api, { params, data, headers, config } = {}) => {
+// $FlowFixMe
+const request = (method: string, api: string, { params, data, headers, config } = {}): Promise => {
 	const baseURL = config.api && config.api.base || '';
 	const apiPrefix = config.api && config.api.prefix || '';
 
@@ -29,4 +32,3 @@ methods.forEach((method) => {
 		return request(method, ...arguments);
 	};
 });
-
