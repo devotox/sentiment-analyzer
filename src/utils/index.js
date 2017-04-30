@@ -110,7 +110,7 @@ const createRequest = (query: string, config: Config): Promise => {
 
 const stocks = {
 	request(query: string, config: Config): Promise {
-		let symbols = query.split(',').map(v => v.trim());
+		let symbols = query.toUpperCase().split(',').map(v => v.trim());
 
 		return Promise.all([
 			stocks.current(symbols),
@@ -157,7 +157,6 @@ const stocks = {
 		let final = {};
 
 		symbols.forEach((symbol) => {
-			symbol = symbol.toUpperCase();
 			final[symbol] = { values: [], news: [] };
 		});
 
