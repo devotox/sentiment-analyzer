@@ -1,4 +1,4 @@
-const { news, sentiment, stocks } = require('../index');
+const { news, sentiment, stocks } = require('../src/lib/index');
 
 const Promise = require('bluebird');
 const { flatten } = require('lodash');

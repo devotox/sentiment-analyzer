@@ -207,8 +207,16 @@ const stocks = {
 		});
 
 		Object.keys(news).forEach(index => {
-			let stockNews = news[index].reverse();
-			final[index].news = stockNews;
+			final[index].news = news[index];
+
+			final[index].news.reverse().forEach(article => {
+				if (article.date) {
+					article.date = moment(article.date).format('llll');
+				}
+				if (article.link && !article.displayLink) {
+					article.displayLink = article.link.replace(/.*?:\/\//g, '').split('/')[0];
+				}
+			});
 		});
 
 		return final;
