@@ -33,19 +33,19 @@ const normalize = (config: Config): Promise => {
 	});
 };
 
-const process = (query: string, config: Config): Promise => {
-	return (response) => new Promise((resolve, reject) => {
-		utils.getFunction('process', 'sentiment', config)(query, config, response)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
-	});
-};
+// const process = (query: string, config: Config): Promise => {
+// 	return (response) => new Promise((resolve, reject) => {
+// 		utils.getFunction('process', 'sentiment', config)(query, config, response)
+// 		.then(utils.resolve(resolve))
+// 		.catch(utils.reject(reject));
+// 	});
+// };
 
 const run = (query: string, config: Config): Promise => {
 	return authenticate(config)
 		.then(request(query, config))
 		.then(normalize(config))
-		.then(process(query, config))
+		// .then(process(query, config))
 };
 
 module.exports = (query: string, options: Options): Promise => {
@@ -56,7 +56,7 @@ module.exports = (query: string, options: Options): Promise => {
 	let source = options.source || null;
 
 	source = `./sources/${source || 'default'}`;
-	
+
 	// $FlowFixMe
 	config = !options.source ? config : Object.assign({}, require(source), config);
 
