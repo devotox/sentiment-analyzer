@@ -80,7 +80,7 @@ const createRequest = (query, config) => {
 
 const stocks = {
 	request(query, config) {
-		let symbols = query.split(',').map(v => v.trim());
+		let symbols = query.toUpperCase().split(',').map(v => v.trim());
 
 		return Promise.all([stocks.current(symbols), stocks.news(symbols, config), stocks.historical(symbols, config)]).then(([current, news, historical]) => {
 			return stocks.merge({ symbols, current, historical, news });
@@ -129,7 +129,6 @@ const stocks = {
 		let final = {};
 
 		symbols.forEach(symbol => {
-			symbol = symbol.toUpperCase();
 			final[symbol] = { values: [], news: [] };
 		});
 
@@ -210,28 +209,6 @@ const stocks = {
 		Object.keys(news).forEach(index => {
 			let stockNews = news[index].reverse();
 			final[index].news = stockNews;
-
-			let totalSentiment = 0;
-			stockNews.forEach(article => {
-				if (article.sentiment) {
-					totalSentiment += article.sentiment.value;
-				}
-				if (article.date) {
-					article.date = moment(article.date).format('llll');
-				}
-				if (article.link && !article.displayLink) {
-					article.displayLink = article.link.replace(/.*?:\/\//g, '').split('/')[0];
-				}
-			});
-
-			let sentimentValue = parseFloat((totalSentiment / stockNews.length).toFixed(2));
-
-			final[index].sentiment = {
-				total: totalSentiment,
-				value: sentimentValue,
-				sentiment: sentiment.polarity(sentimentValue),
-				confidence: sentiment.confidence(sentimentValue)
-			};
 		});
 
 		return final;
@@ -310,6 +287,13 @@ const news = {
 	normalize(config, response) {
 		let data = news.getValue('key', config, response) || response;
 		return Promise.map(data, doc => {
+			if (doc.date) {
+				doc.date = moment(doc.date).format('llll');
+			}
+			if (doc.link && !doc.displayLink) {
+				doc.displayLink = doc.link.replace(/.*?:\/\//g, '').split('/')[0];
+			}
+
 			// $FlowFixMe
 			return {
 				body: null,
@@ -336,6 +320,13 @@ const news = {
 		return search(query, options).then(result => {
 			result.data.items = result.data.items || [];
 			return Promise.map(result.data.items, doc => {
+				if (doc.date) {
+					doc.date = moment(doc.date).format('llll');
+				}
+				if (doc.link && !doc.displayLink) {
+					doc.displayLink = doc.link.replace(/.*?:\/\//g, '').split('/')[0];
+				}
+
 				// $FlowFixMe
 				return {
 					body: null,

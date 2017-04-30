@@ -17,7 +17,7 @@ const createRequest = (query: string, options: Object): Object => {
 			start: options.startIndex || 1,
 			orTerms: options.orTerms,
 			siteSearch: options.site,
-			num: options.num || 10,
+			num: options.num || 12,
 			lr: options.language,
 			sort: options.sort,
 			q: query,

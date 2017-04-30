@@ -234,33 +234,18 @@ const stocks = {
 			final[index].values.unshift(finalStock);
 		});
 
-		Object.keys(news).forEach((index) => {
-			let stockNews = news[index].reverse();
-			final[index].news = stockNews;
-
-			let totalSentiment = 0;
-			stockNews.forEach((article) => {
-				if(article.sentiment) {
-					totalSentiment += article.sentiment.value;
-				}
-				if(article.date) {
+		Object.keys(news).forEach(index => {
+			final[index].news = news[index];
+			
+			final[index].news.reverse()
+			.forEach((article) => {
+				if (article.date) {
 					article.date = moment(article.date).format('llll');
 				}
-				if(article.link && !article.displayLink) {
+				if (article.link && !article.displayLink) {
 					article.displayLink = article.link.replace(/.*?:\/\//g, '').split('/')[0];
 				}
 			});
-
-			let sentimentValue = parseFloat(
-				(totalSentiment / stockNews.length).toFixed(2)
-			);
-
-			final[index].sentiment = {
-				total: totalSentiment,
-				value: sentimentValue,
-				sentiment: sentiment.polarity(sentimentValue),
-				confidence: sentiment.confidence(sentimentValue)
-			};
 		});
 
 		return final;
@@ -343,6 +328,13 @@ const news = {
 	normalize(config: Config, response: Object): Promise {
 		let data = news.getValue('key', config, response) || response;
 		return Promise.map(data, (doc): NewsResults => {
+			if (doc.date) {
+				doc.date = moment(doc.date).format('llll');
+			}
+			if (doc.link && !doc.displayLink) {
+				doc.displayLink = doc.link.replace(/.*?:\/\//g, '').split('/')[0];
+			}
+
 			// $FlowFixMe
 			return {
 				body: null,
@@ -370,6 +362,13 @@ const news = {
 		.then((result) => {
 			result.data.items = result.data.items || [];
 			return Promise.map(result.data.items, (doc): NewsResults => {
+				if (doc.date) {
+					doc.date = moment(doc.date).format('llll');
+				}
+				if (doc.link && !doc.displayLink) {
+					doc.displayLink = doc.link.replace(/.*?:\/\//g, '').split('/')[0];
+				}
+
 				// $FlowFixMe
 				return {
 					body: null,
