@@ -24,14 +24,17 @@ const normalize = config => {
 	});
 };
 
-const process = (query, config) => {
-	return response => new Promise((resolve, reject) => {
-		utils.getFunction('process', 'sentiment', config)(query, config, response).then(utils.resolve(resolve)).catch(utils.reject(reject));
-	});
-};
+// const process = (query: string, config: Config): Promise => {
+// 	return (response) => new Promise((resolve, reject) => {
+// 		utils.getFunction('process', 'sentiment', config)(query, config, response)
+// 		.then(utils.resolve(resolve))
+// 		.catch(utils.reject(reject));
+// 	});
+// };
 
 const run = (query, config) => {
-	return authenticate(config).then(request(query, config)).then(normalize(config)).then(process(query, config));
+	return authenticate(config).then(request(query, config)).then(normalize(config));
+	// .then(process(query, config))
 };
 
 module.exports = (query, options) => {
