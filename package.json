@@ -8,8 +8,9 @@
 		"url": "https://github.com/devotox/sentiment-analyzer"
 	},
 	"scripts": {
-		"pretest": "nsp check && npm run jsinspect && npm run lint",
-		"jsinspect": "jsinspect -t 40 ./ || true",
+		"pretest": "npm run nsp && npm run jsinspect && npm run lint",
+		"jsinspect": "./node_modules/.bin/jsinspect -t 100 ./src",
+		"nsp": "./node_modules/.bin/nsp check",
 		"test": "mocha tests/",
 		"lint": "eslint ./",
 		"postrelease": "npm publish",
@@ -46,7 +47,9 @@
 	"devDependencies": {
 		"babel-plugin-transform-flow-strip-types": "6.22.0",
 		"eslint": "3.19.0",
+		"jsinspect": "0.12.4",
 		"mocha": "3.4.2",
+		"nsp": "2.6.3",
 		"sidekick": "1.12.2"
 	}
 }
