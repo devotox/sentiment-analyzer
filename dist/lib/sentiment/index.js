@@ -33,8 +33,9 @@ const normalize = config => {
 // };
 
 const run = (query, config) => {
-	return authenticate(config).then(request(query, config)).then(normalize(config));
+	return authenticate(config).then(request(query, config)).then(normalize(config)
 	// .then(process(query, config))
+	);
 };
 
 module.exports = (query, options) => {

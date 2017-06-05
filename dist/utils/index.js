@@ -15,7 +15,7 @@ const search = require('./search');
 const textVersion = require('textversionjs');
 
 let today = moment().format('YYYY-MM-DD');
-let lastWeek = moment().subtract(4, 'week').format('YYYY-MM-DD');
+let oneMonthAgo = moment().subtract(1, 'month').format('YYYY-MM-DD');
 
 const noop = () => {};
 
@@ -24,18 +24,22 @@ const styleConfig = {
 	imgProcess: noop
 };
 
-const stripHTML = (config, html) => {
+const stripHTML = (config, html, full = true) => {
 	let $ = cheerio.load(html);
 	let $html = $('<span/>').html(html);
 	config.selector = config.selector || 'body';
 	let text = $html.find(config.selector).html();
-	return replaceHTML(text);
+	return replaceHTML(text, full);
 };
 
-const replaceHTML = (text = '') => {
+const replaceHTML = (text = '', full) => {
 	text = stripLinks(text);
-	text = textVersion(text, styleConfig);
-	text = entities.decode(text);
+
+	if (full) {
+		text = textVersion(text, styleConfig);
+		text = entities.decode(text);
+	}
+
 	text = text.replace(/<(?:.|\n)*?>/igm, '');
 	return trim(text);
 };
@@ -81,8 +85,11 @@ const createRequest = (query, config) => {
 const stocks = {
 	request(query, config) {
 		let symbols = query.toUpperCase().split(',').map(v => v.trim());
-
-		return Promise.all([stocks.current(symbols), stocks.news(symbols, config), stocks.historical(symbols, config)]).then(([current, news, historical]) => {
+		return Promise.props({
+			current: stocks.current(symbols),
+			news: stocks.news(symbols, config),
+			historical: stocks.historical(symbols, config)
+		}).then(({ current, news, historical }) => {
 			return stocks.merge({ symbols, current, historical, news });
 		});
 	},
@@ -100,8 +107,8 @@ const stocks = {
 		return new Promise((resolve, reject) => {
 			return finance.historical({
 				symbols: symbols,
-				to: options.toDate || today,
-				from: options.fromDate || lastWeek
+				to: options.enddate || today,
+				from: options.startdate || oneMonthAgo
 			}, (error, data) => {
 				if (error) {
 					return reject(new Error(error));
@@ -114,8 +121,8 @@ const stocks = {
 		return new Promise((resolve, reject) => {
 			return finance.companyNews({
 				symbols: symbols,
-				to: options.toDate || today,
-				from: options.fromDate || lastWeek
+				to: options.enddate || today,
+				from: options.startdate || oneMonthAgo
 			}, (error, data) => {
 				if (error) {
 					return reject(new Error(error));
@@ -252,7 +259,7 @@ const stocks = {
 			if (!doc.body) {
 				return;
 			}
-			doc.body = stripHTML(config, doc.body);
+			doc.body = stripHTML(config, doc.body, false);
 		}).then(() => response);
 	}
 };

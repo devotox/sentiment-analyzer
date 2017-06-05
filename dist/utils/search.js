@@ -5,17 +5,18 @@ const searchURL = "https://www.googleapis.com/customsearch/v1";
 const createRequest = (query, options) => {
 	let cx = options && options.google && options.google.cx;
 	let key = options && options.google && options.google.key;
+
 	return {
 		url: searchURL,
 		method: 'GET',
 		params: {
-			dateRestrict: options.dateRestrict || 'd5',
+			dateRestrict: options.dateRestrict,
 			excludeTerms: options.excludeTerms,
 			exactTerms: options.exactTerms,
 			start: options.startIndex || 1,
 			orTerms: options.orTerms,
 			siteSearch: options.site,
-			num: options.num || 12,
+			num: options.num || 10,
 			lr: options.language,
 			sort: options.sort,
 			q: query,
