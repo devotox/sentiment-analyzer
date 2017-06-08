@@ -340,7 +340,7 @@ const news = {
 
 			// $FlowFixMe
 			return {
-				body: null,
+				body: undefined,
 				date: news.getValue('date', config, doc),
 				link: news.getValue('link', config, doc),
 				title: news.getValue('title', config, doc),
@@ -374,7 +374,7 @@ const news = {
 
 				// $FlowFixMe
 				return {
-					body: null,
+					body: undefined,
 					date: doc.date,
 					link: doc.link,
 					title: doc.title,
