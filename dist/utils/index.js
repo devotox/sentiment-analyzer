@@ -29,6 +29,9 @@ const stripHTML = (config, html, full = true) => {
 	let $html = $('<span/>').html(html);
 	config.selector = config.selector || 'body';
 	let text = $html.find(config.selector).html();
+	if (!text) {
+		console.log(html);
+	}
 	return replaceHTML(text, full);
 };
 
@@ -60,7 +63,7 @@ const resolve = resolve => {
 
 const reject = reject => {
 	return error => {
-		reject(new Error(existential(error, 'response.data.error') || existential(error, 'response.data', error)));
+		reject(error instanceof Error ? error : new Error(existential(error, 'response.data.error') || existential(error, 'response.data', error)));
 	};
 };
 
@@ -311,7 +314,7 @@ const news = {
 
 			// $FlowFixMe
 			return {
-				body: null,
+				body: undefined,
 				date: news.getValue('date', config, doc),
 				link: news.getValue('link', config, doc),
 				title: news.getValue('title', config, doc),
@@ -344,7 +347,7 @@ const news = {
 
 				// $FlowFixMe
 				return {
-					body: null,
+					body: undefined,
 					date: doc.date,
 					link: doc.link,
 					title: doc.title,

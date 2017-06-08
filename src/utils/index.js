@@ -35,7 +35,7 @@ const stripHTML = (config: Config, html: string, full: boolean = true): string =
 	let $ = cheerio.load(html);
 	let $html = $('<span/>').html(html);
 	config.selector = config.selector || 'body';
-	let text = $html.find(config.selector).html();
+	let text = $html.find(config.selector).text() || $html.text() || html;
 	return replaceHTML(text, full);
 };
 
@@ -80,7 +80,7 @@ const resolve = (resolve: Function) => {
 
 const reject = (reject: Function) => {
 	return (error: Object) => {
-		reject(new Error(
+		reject(error instanceof Error ? error : new Error(
 			existential(error, 'response.data.error') || existential(error, 'response.data', error)
 		));
 	};
@@ -123,7 +123,7 @@ const stocks = {
 			return stocks.merge({ symbols, current, historical, news });
 		});
 	},
-	current(symbols) {
+	current(symbols: string[]) {
 		return new Promise((resolve, reject) => {
 			financeToday(symbols, (error, data) => {
 				if(error) { return reject(new Error(error)); }
@@ -131,7 +131,7 @@ const stocks = {
 			});
 		});
 	},
-	historical(symbols, options: Object) {
+	historical(symbols: string[], options: Object) {
 		return new Promise((resolve, reject) => {
 			return finance.historical({
 				symbols: symbols,
@@ -143,7 +143,7 @@ const stocks = {
 			});
 		});
 	},
-	news(symbols, options: Object) {
+	news(symbols: string[], options: Object) {
 		return new Promise((resolve, reject) => {
 			return finance.companyNews({
 				symbols: symbols,
@@ -155,6 +155,7 @@ const stocks = {
 			});
 		});
 	},
+	// $FlowFixMe
 	merge({ symbols, current, historical, news }) {
 
 		let final = {};
@@ -326,7 +327,7 @@ const news = {
 	getValue(key: string, config: Config, response: Object) {
 		config.results = config.results || {};
 		return config.results && config.results[key] ?
-				response[config.results[key]] : response[key];
+			response[config.results[key]] : response[key];
 	},
 	normalize(config: Config, response: Object): Promise {
 		let data = news.getValue('key', config, response) || response;
