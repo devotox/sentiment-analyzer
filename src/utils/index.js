@@ -342,6 +342,7 @@ const news = {
 			// $FlowFixMe
 			return {
 				body: undefined,
+				guid: news.getValue('guid', config, doc),
 				date: news.getValue('date', config, doc),
 				link: news.getValue('link', config, doc),
 				title: news.getValue('title', config, doc),
@@ -380,7 +381,8 @@ const news = {
 					link: doc.link,
 					title: doc.title,
 					summary: doc.snippet,
-					displayLink: doc.displayLink
+					displayLink: doc.displayLink,
+					guid: `${doc.kind}:${doc.cacheId}`
 				};
 			});
 		});

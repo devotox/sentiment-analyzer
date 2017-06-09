@@ -28,10 +28,7 @@ const stripHTML = (config, html, full = true) => {
 	let $ = cheerio.load(html);
 	let $html = $('<span/>').html(html);
 	config.selector = config.selector || 'body';
-	let text = $html.find(config.selector).html();
-	if (!text) {
-		console.log(html);
-	}
+	let text = $html.find(config.selector).text() || $html.text() || html;
 	return replaceHTML(text, full);
 };
 
@@ -134,6 +131,7 @@ const stocks = {
 			});
 		});
 	},
+	// $FlowFixMe
 	merge({ symbols, current, historical, news }) {
 
 		let final = {};
