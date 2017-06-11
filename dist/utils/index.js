@@ -244,23 +244,50 @@ const stocks = {
 		});
 	},
 	body(config, response) {
-		let news = flatten(Object.keys(response).map(key => response[key].news));
+		return Promise.map(Object.keys(response), symbol => {
+			let news = response[symbol].news;
+			let i = news.length;
+			let promises = [];
 
-		return Promise.map(news, doc => {
-			if (!doc.link) {
-				return;
+			while (i--) {
+				let doc = news[i];
+
+				if (!doc.link) {
+					news.splice(i, 1);
+					continue;
+				}
+
+				let promise = stocks.article(config, doc.link).then(response => doc.body = response).catch(noop);
+
+				promises.push(promise);
 			}
-			return stocks.article(config, doc.link).then(response => doc.body = response).catch(noop);
+
+			return Promise.all(promises);
 		}).then(() => response);
 	},
 	text(config, response) {
-		let news = flatten(Object.keys(response).map(key => response[key].news));
+		return Promise.map(Object.keys(response), symbol => {
+			let news = response[symbol].news;
+			let i = news.length;
+			let promises = [];
 
-		return Promise.map(news, doc => {
-			if (!doc.body) {
-				return;
+			while (i--) {
+				let doc = news[i];
+
+				if (!doc.body) {
+					news.splice(i, 1);
+					continue;
+				}
+
+				let promise = Promise.resolve().then(() => {
+					doc.body = stripHTML(config, doc.body, false);
+					doc.summary = doc.summary || doc.body.substring(0, 100);
+				});
+
+				promises.push(promise);
 			}
-			doc.body = stripHTML(config, doc.body, false);
+
+			return Promise.all(promises);
 		}).then(() => response);
 	}
 };
@@ -369,25 +396,45 @@ const news = {
 		});
 	},
 	body(config, response) {
-		return Promise.map(response, doc => {
+		let i = response.length;
+		let promises = [];
+
+		while (i--) {
+			let doc = response[i];
+
 			if (!doc.link) {
-				return;
-			}
-			return news.article(config, doc.link).then(response => doc.body = response).catch(noop);
-		}).then(() => response);
-	},
-	text(config, response) {
-		return Promise.map(response, doc => {
-			if (typeof doc.body != 'string') {
-				doc.body = '';
-			}
-			if (!doc.body) {
-				return;
+				response.splice(i, 1);
+				continue;
 			}
 
-			doc.body = stripHTML(config, doc.body);
-			doc.summary = doc.summary || doc.body.substring(0, 100);
-		}).then(() => response);
+			let promise = news.article(config, doc.link).then(response => doc.body = response).catch(noop);
+
+			promises.push(promise);
+		}
+
+		return Promise.all(promises).then(() => response);
+	},
+	text(config, response) {
+		let i = response.length;
+		let promises = [];
+
+		while (i--) {
+			let doc = response[i];
+
+			if (!doc.body) {
+				response.splice(i, 1);
+				continue;
+			}
+
+			let promise = Promise.resolve().then(() => {
+				doc.body = stripHTML(config, doc.body, false);
+				doc.summary = doc.summary || doc.body.substring(0, 100);
+			});
+
+			promises.push(promise);
+		}
+
+		return Promise.all(promises).then(() => response);
 	}
 };
 

@@ -5,7 +5,7 @@ const request = require('axios');
 const moment = require('moment');
 const cheerio = require('cheerio');
 const Promise = require('bluebird');
-const { get:existential, flatten } = require('lodash');
+const { get:existential } = require('lodash');
 
 const finance = require('google-finance');
 const financeToday = require('google-stocks');
