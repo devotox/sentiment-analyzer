@@ -416,7 +416,7 @@ const news = {
 					title: doc.title,
 					summary: doc.snippet,
 					displayLink: doc.displayLink,
-					guid: `${doc.kind}:${doc.cacheId}`
+					guid: `${doc.kind}:${doc.cacheId || doc.link || doc.date}`
 				};
 			});
 		});
