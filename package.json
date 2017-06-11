@@ -31,7 +31,7 @@
 		"axios": "0.16.2",
 		"bluebird": "3.5.0",
 		"cheerio": "1.0.0-rc.1",
-		"fluture": "6.2.5",
+		"fluture": "6.2.6",
 		"google-finance": "0.1.9",
 		"google-stocks": "1.0.1",
 		"he": "1.1.1",
