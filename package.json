@@ -38,7 +38,7 @@
 		"indico.io": "0.10.5",
 		"lodash": "4.17.4",
 		"moment": "2.19.0",
-		"ramda": "0.24.1",
+		"ramda": "0.25.0",
 		"request": "2.83.0",
 		"retext": "5.0.0",
 		"retext-sentiment": "4.1.0",
