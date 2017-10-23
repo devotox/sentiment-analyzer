@@ -27,7 +27,7 @@
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
-		"@google-cloud/language": "0.13.0",
+		"@google-cloud/language": "1.0.0",
 		"axios": "0.16.2",
 		"bluebird": "3.5.1",
 		"cheerio": "1.0.0-rc.2",
