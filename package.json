@@ -43,7 +43,7 @@
 		"retext": "5.0.0",
 		"retext-sentiment": "4.1.0",
 		"textversionjs": "1.0.2",
-		"yahoo-finance": "0.3.4"
+		"yahoo-finance": "0.3.5"
 	},
 	"devDependencies": {
 		"babel-cli": "6.26.0",
