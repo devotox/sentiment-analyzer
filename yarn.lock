@@ -1609,6 +1609,19 @@ google-finance@0.1.10:
     request-promise "4.1.1"
     string "3.3.1"
 
+google-finance@devotox/node-google-finance:
+  version "0.1.10"
+  resolved "https://codeload.github.com/devotox/node-google-finance/tar.gz/30c58043fbd4c53b44aeb700c75ad15be7c3690e"
+  dependencies:
+    bluebird "3.4.1"
+    debug "2.2.0"
+    feedparser "1.1.4"
+    lodash "4.15.0"
+    moment "2.14.1"
+    request "2.74.0"
+    request-promise "4.1.1"
+    string "3.3.1"
+
 google-gax@^0.14.1:
   version "0.14.2"
   resolved "https://registry.yarnpkg.com/google-gax/-/google-gax-0.14.2.tgz#2b1f2b86e8be98a620041cee710e4f4ce61b6e2b"

@@ -33,7 +33,7 @@
 		"bluebird": "3.5.1",
 		"cheerio": "1.0.0-rc.2",
 		"fluture": "8.0.0",
-		"google-finance": "0.1.10",
+		"google-finance": "devotox/node-google-finance",
 		"google-stocks": "devotox/google-stocks#patch-1",
 		"he": "1.1.1",
 		"indico.io": "0.10.5",

@@ -49,7 +49,7 @@ const stripLinks = (text = '') => {
 };
 
 const trim = (text = '') => {
-	return text.trim().replace(/(?:\r\n|\r|\n|\t|\s+)/igm, ' ').replace(/\s+,/igm, ',').replace(/,+/igm, ',').replace(/\s+\./igm, '.').replace(/\.+/igm, '.').replace(/\s+=/igm, '=').replace(/=+/igm, '.').replace(/\s+-/igm, '-').replace(/-+/igm, '.').replace(/,\./igm, '.').replace(/\.,/igm, '.').replace(/\\\'/igm, '\'').replace(/\s+/igm, ' ');
+	return text.trim().replace(/(?:\r\n|\r|\n|\t|\s+)/igm, ' ').replace(/\s+,/igm, ',').replace(/,+/igm, ',').replace(/\s+\./igm, '.').replace(/\.+/igm, '.').replace(/\s+=/igm, '=').replace(/=+/igm, '.').replace(/\s+-/igm, '-').replace(/-+/igm, '.').replace(/,\./igm, '.').replace(/\.,/igm, '.').replace(/\\'/igm, '\'').replace(/\s+/igm, ' ');
 };
 
 const resolve = resolve => {
@@ -96,10 +96,7 @@ const stocks = {
 	current(symbols) {
 		return new Promise((resolve, reject) => {
 			financeToday(symbols, (error, data) => {
-				if (error) {
-					return reject(new Error(error));
-				}
-				resolve(data);
+				error ? reject(new Error(error)) : resolve(data);
 			});
 		});
 	},
@@ -110,10 +107,7 @@ const stocks = {
 				to: options.enddate || today,
 				from: options.startdate || oneMonthAgo
 			}, (error, data) => {
-				if (error) {
-					return reject(new Error(error));
-				}
-				resolve(data);
+				error ? reject(new Error(error)) : resolve(data);
 			});
 		});
 	},
@@ -124,10 +118,7 @@ const stocks = {
 				to: options.enddate || today,
 				from: options.startdate || oneMonthAgo
 			}, (error, data) => {
-				if (error) {
-					return reject(new Error(error));
-				}
-				resolve(data);
+				error ? reject(new Error(error)) : resolve(data);
 			});
 		});
 	},
@@ -280,7 +271,7 @@ const stocks = {
 				}
 
 				let promise = Promise.resolve().then(() => {
-					doc.body = stripHTML(config, doc.body, false);
+					doc.body = stripHTML(config, doc.body, true);
 					doc.summary = doc.summary || doc.body.substring(0, 100);
 				});
 
@@ -427,7 +418,7 @@ const news = {
 			}
 
 			let promise = Promise.resolve().then(() => {
-				doc.body = stripHTML(config, doc.body, false);
+				doc.body = stripHTML(config, doc.body, true);
 				doc.summary = doc.summary || doc.body.substring(0, 100);
 			});
 
