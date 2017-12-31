@@ -31,12 +31,12 @@ const createRequest = (query: string, options: Object): Object => {
 const google = (query: string, options: Object): request => {
 	let requestConfig = createRequest(query, options);
 	return request(requestConfig)
-	.then((response) => {
-		return {
-			search: query,
-			data: response.data
-		};
-	});
+		.then((response) => {
+			return {
+				search: query,
+				data: response.data
+			};
+		});
 };
 
 const run = (query: string, options: Object): request => {

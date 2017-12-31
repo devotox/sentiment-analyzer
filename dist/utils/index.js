@@ -49,7 +49,7 @@ const stripLinks = (text = '') => {
 };
 
 const trim = (text = '') => {
-	return text.trim().replace(/(?:\r\n|\r|\n|\t|\s+)/igm, ' ').replace(/\s+\,/igm, ',').replace(/\,+/igm, ',').replace(/\s+\./igm, '.').replace(/\.+/igm, '.').replace(/\s+\=/igm, '=').replace(/\=+/igm, '.').replace(/\s+\-/igm, '-').replace(/\-+/igm, '.').replace(/\,\./igm, '.').replace(/\.\,/igm, '.').replace(/\\\'/igm, '\'').replace(/\s+/igm, ' ');
+	return text.trim().replace(/(?:\r\n|\r|\n|\t|\s+)/igm, ' ').replace(/\s+,/igm, ',').replace(/,+/igm, ',').replace(/\s+\./igm, '.').replace(/\.+/igm, '.').replace(/\s+=/igm, '=').replace(/=+/igm, '.').replace(/\s+-/igm, '-').replace(/-+/igm, '.').replace(/,\./igm, '.').replace(/\.,/igm, '.').replace(/\\\'/igm, '\'').replace(/\s+/igm, ' ');
 };
 
 const resolve = resolve => {
@@ -379,7 +379,7 @@ const news = {
 					title: doc.title,
 					summary: doc.snippet,
 					displayLink: doc.displayLink,
-					guid: `${doc.kind}:${doc.cacheId}`
+					guid: `${doc.kind}:${doc.cacheId || doc.link || doc.date}`
 				};
 			});
 		});

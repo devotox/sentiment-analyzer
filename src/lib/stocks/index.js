@@ -20,32 +20,32 @@ const authenticate = (config: Config): Promise => {
 const request = (query: string, config: Config): Promise => {
 	return () => new Promise((resolve, reject) => {
 		utils.getRequest('request', 'stocks', config)(query, config)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
+			.then(utils.resolve(resolve))
+			.catch(utils.reject(reject));
 	});
 };
 
 const normalize = (config: Config): Promise => {
 	return (response) => new Promise((resolve, reject) => {
 		utils.getFunction('normalize', 'stocks', config)(config, response)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
+			.then(utils.resolve(resolve))
+			.catch(utils.reject(reject));
 	});
 };
 
 const body = (config: Config): Promise => {
 	return (response) => new Promise((resolve, reject) => {
 		utils.getFunction('body', 'stocks', config)(config, response)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
+			.then(utils.resolve(resolve))
+			.catch(utils.reject(reject));
 	});
 };
 
 const text = (config: Config): Promise => {
 	return (response) => new Promise((resolve, reject) => {
 		utils.getFunction('text', 'stocks', config)(config, response)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
+			.then(utils.resolve(resolve))
+			.catch(utils.reject(reject));
 	});
 };
 

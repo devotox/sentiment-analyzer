@@ -21,3 +21,4 @@ npm-debug.log
 !**/sources/.gitkeep
 
 demo/test.js
+dist/flow.types.js

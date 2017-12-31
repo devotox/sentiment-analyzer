@@ -20,40 +20,40 @@ const authenticate = (config: Config): Promise => {
 const request = (query: string, config: Config): Promise => {
 	return () => new Promise((resolve, reject) => {
 		utils.getRequest('request', 'news', config)(query, config)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
+			.then(utils.resolve(resolve))
+			.catch(utils.reject(reject));
 	});
 };
 
 const normalize = (config: Config): Promise => {
 	return (response) => new Promise((resolve, reject) => {
 		utils.getFunction('normalize', 'news', config)(config, response)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
+			.then(utils.resolve(resolve))
+			.catch(utils.reject(reject));
 	});
 };
 
 const filter = (config: Config): Promise => {
 	return (response) => new Promise((resolve, reject) => {
 		utils.getFunction('filter', 'news', config)(config, response)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
+			.then(utils.resolve(resolve))
+			.catch(utils.reject(reject));
 	});
 };
 
 const body = (config: Config): Promise => {
 	return (response) => new Promise((resolve, reject) => {
 		utils.getFunction('body', 'news', config)(config, response)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
+			.then(utils.resolve(resolve))
+			.catch(utils.reject(reject));
 	});
 };
 
 const text = (config: Config): Promise => {
 	return (response) => new Promise((resolve, reject) => {
 		utils.getFunction('text', 'news', config)(config, response)
-		.then(utils.resolve(resolve))
-		.catch(utils.reject(reject));
+			.then(utils.resolve(resolve))
+			.catch(utils.reject(reject));
 	});
 };
 

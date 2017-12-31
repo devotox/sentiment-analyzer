@@ -19,18 +19,18 @@ const addStockSentiment = (response) => {
 	let news = flatten(Object.keys(response).map(key => response[key].news));
 
 	return Promise.map(news, getSentiment)
-	.then(() => response);
+		.then(() => response);
 };
 
 const addSentiment = (response) => {
 	return Promise.map(response, getSentiment)
-	.then(() => response);
+		.then(() => response);
 };
 
 const getSentiment = (doc) => {
 	return sentiment(doc.body, config.sentiment)
-	.then((sentiment) => doc.sentiment = sentiment)
-	.catch(() => doc.sentiment = {});
+		.then((sentiment) => doc.sentiment = sentiment)
+		.catch(() => doc.sentiment = {});
 };
 
 const getNews = (topic) => {

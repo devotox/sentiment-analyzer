@@ -1,12 +1,10 @@
----
 language: node_js
 node_js:
-  - "6"
-
+- '6'
 sudo: false
+dist: trusty
 env:
   - CXX=g++-4.8
-
 addons:
   apt:
     sources:
@@ -14,26 +12,32 @@ addons:
     packages:
     - gcc-4.8
     - g++-4.8
-
-cache::
+cache:
   directories:
-    - $HOME/.npm
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm config set spin false
-
+- npm config set spin false
+- npm install -g npm@4
+- npm --version
+- npm install -g greenkeeper-lockfile@1
+- npm install -g codecov
 install:
-  - npm install
-
+- npm install
 script:
-  - sidekick run --ci
-  - npm test
-
-after_script:
-  - cat ./test-coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-
+- sidekick run --ci
+- npm run test
+- codecov
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
 notifications:
+  webhooks:
+    urls:
+    - https://webhook.atomist.com/travis
+    on_success: always
+    on_failure: always
+    on_start: always
+    on_cancel: always
+    on_error: always
   slack:
     rooms:
       secure: BLHDRCLsevl2wKQ2NaG5Gjisrc0FHBm1BM7F2guSQYuaPLGRvdugLvS+uWiiyFs5ldA9tBvyHM7Wvl+QWmVpcYw+Z7K9GhQ5jgFj24Y7pUPSotbsdm0DxWmNS3Z4DDzn4bH59L44ulVB5MPjPEIcHdePhqBSR+7sAUn6BM6uG9p/1ZW4j0OVTH5WxhtIZ0fVI8HsxcARZgOUS0uzZxLJqs2Nea5mS68a1csLA12DaJp9GaNh4EYvlH8swhNpNMDic+xJ5GYZ4TzaD00hqs3wnxqnQ+Pi3JEoflg0bHnH57pEv+bz6xpJiyGFns4niPT1K4LrJzKHVF9cuaEXuDm4yDfYC6ksW5VWa/9UgI/48mcUbzzvZXCGQZSOvrVpmAsL0bvplV+P4AKw23/+7s+Bnp5ku5bRlx6/bMheNkdThQnt7wra4oO/h9gAaWXLMONOk8zjaHl5zG+JHjRxXbgpa9F+An3MbugGimCmFMlsPThWsgCcnWZy1aqXXasRvun9uDvob0QJN1OZqWSRfMMyteEo292y7JOwKJKXtftVJTYvbr1gi5y++zsy6i2rrXAsBcUtN7/FzHHP4z24LNPhbGzf0L3TgsvNc4q5aDW64NEV87Qgu7pibVIAWbGkit5kGmPO/fkg91Q3gRCXfTtm07jqIWaqTDbdtUguQhh6PTs=

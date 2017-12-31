@@ -1,13 +1,13 @@
 module.exports = {
 	"root": true,
 	"parser": "babel-eslint",
+	"parserOptions": {
+		'ecmaVersion': 2017,
+		"sourceType": "module"
+	},
 	"plugins": [
 		"flowtype"
 	],
-	"parserOptions": {
-		"ecmaVersion": 6,
-		"sourceType": "module"
-	},
 	"extends": [
 		"eslint:recommended",
 		"plugin:flowtype/recommended"

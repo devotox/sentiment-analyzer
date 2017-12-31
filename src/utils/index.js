@@ -62,12 +62,12 @@ const stripLinks = (text = '') => {
 const trim = (text = '') => {
 	return text.trim()
 		.replace(/(?:\r\n|\r|\n|\t|\s+)/igm, ' ')
-		.replace(/\s+\,/igm, ',').replace(/\,+/igm, ',')
+		.replace(/\s+,/igm, ',').replace(/,+/igm, ',')
 		.replace(/\s+\./igm, '.').replace(/\.+/igm, '.')
-		.replace(/\s+\=/igm, '=').replace(/\=+/igm, '.')
-		.replace(/\s+\-/igm, '-').replace(/\-+/igm, '.')
-		.replace(/\,\./igm, '.').replace(/\.\,/igm, '.')
-		.replace(/\\\'/igm, '\'').replace(/\s+/igm, ' ');
+		.replace(/\s+=/igm, '=').replace(/=+/igm, '.')
+		.replace(/\s+-/igm, '-').replace(/-+/igm, '.')
+		.replace(/,\./igm, '.').replace(/\.,/igm, '.')
+		.replace(/\\'/igm, '\'').replace(/\s+/igm, ' ');
 };
 
 const resolve = (resolve: Function) => {
@@ -89,16 +89,16 @@ const reject = (reject: Function) => {
 const getFunction = (func: string, type: string, config: Config) => {
 	return (
 		config[func] ?
-		config[func] :
-		module.exports[type][func]
+			config[func] :
+			module.exports[type][func]
 	);
 };
 
 const getRequest = (func: string, type: string, config: Config) => {
 	return (
 		config.google ?
-		module.exports[type].google :
-		getFunction(func, type, config)
+			module.exports[type].google :
+			getFunction(func, type, config)
 	);
 };
 
@@ -126,8 +126,7 @@ const stocks = {
 	current(symbols: string[]) {
 		return new Promise((resolve, reject) => {
 			financeToday(symbols, (error, data) => {
-				if(error) { return reject(new Error(error)); }
-				resolve(data);
+				error ? reject(new Error(error)) : resolve(data);
 			});
 		});
 	},
@@ -138,8 +137,7 @@ const stocks = {
 				to: options.enddate || today,
 				from: options.startdate || oneMonthAgo
 			}, (error, data) => {
-				if(error) { return reject(new Error(error)); }
-				resolve(data);
+				error ? reject(new Error(error)) : resolve(data);
 			});
 		});
 	},
@@ -150,8 +148,7 @@ const stocks = {
 				to: options.enddate || today,
 				from: options.startdate || oneMonthAgo
 			}, (error, data) => {
-				if(error) { return reject(new Error(error)); }
-				resolve(data);
+				error ? reject(new Error(error)) : resolve(data);
 			});
 		});
 	},
@@ -242,14 +239,14 @@ const stocks = {
 			final[index].news = news[index];
 
 			final[index].news.reverse()
-			.forEach((article) => {
-				if (article.date) {
-					article.date = moment(article.date).format('llll');
-				}
-				if (article.link && !article.displayLink) {
-					article.displayLink = article.link.replace(/.*?:\/\//g, '').split('/')[0];
-				}
-			});
+				.forEach((article) => {
+					if (article.date) {
+						article.date = moment(article.date).format('llll');
+					}
+					if (article.link && !article.displayLink) {
+						article.displayLink = article.link.replace(/.*?:\/\//g, '').split('/')[0];
+					}
+				});
 		});
 
 		return final;
@@ -266,8 +263,8 @@ const stocks = {
 
 		return new Promise((res, rej) => {
 			request(requestConfig)
-			.then(resolve(res))
-			.catch(reject(rej));
+				.then(resolve(res))
+				.catch(reject(rej));
 		});
 	},
 	body(config: Config, response: Object): Promise {
@@ -285,15 +282,15 @@ const stocks = {
 				}
 
 				let promise = stocks.article(config, doc.link)
-				.then((response) => doc.body = response)
-				.catch(noop);
+					.then((response) => doc.body = response)
+					.catch(noop);
 
 				promises.push(promise);
 			}
 
 			return Promise.all(promises);
 		})
-		.then(() => response);
+			.then(() => response);
 	},
 	text(config: Config, response: Object): Promise {
 		return Promise.map(Object.keys(response), (symbol) => {
@@ -310,17 +307,17 @@ const stocks = {
 				}
 
 				let promise = Promise.resolve()
-				.then(() => {
-					doc.body = stripHTML(config, doc.body, false);
-					doc.summary = doc.summary || doc.body.substring(0, 100);
-				});
+					.then(() => {
+						doc.body = stripHTML(config, doc.body, true);
+						doc.summary = doc.summary || doc.body.substring(0, 100);
+					});
 
 				promises.push(promise);
 			}
 
 			return Promise.all(promises);
 		})
-		.then(() => response);
+			.then(() => response);
 	}
 };
 
@@ -331,9 +328,9 @@ const sentiment = {
 			let processedText = null;
 
 			retext()
-			.use(retextSentiment)
-			.use(() => (cst) => processedText = cst)
-			.process(query);
+				.use(retextSentiment)
+				.use(() => (cst) => processedText = cst)
+				.process(query);
 
 			response.processed = processedText;
 			resolve(response);
@@ -398,28 +395,28 @@ const news = {
 		let options = Object.assign({}, params, { google: config.google });
 
 		return search(query, options)
-		.then((result) => {
-			result.data.items = result.data.items || [];
-			return Promise.map(result.data.items, (doc): NewsResults => {
-				if (doc.date) {
-					doc.date = moment(doc.date).format('llll');
-				}
-				if (doc.link && !doc.displayLink) {
-					doc.displayLink = doc.link.replace(/.*?:\/\//g, '').split('/')[0];
-				}
+			.then((result) => {
+				result.data.items = result.data.items || [];
+				return Promise.map(result.data.items, (doc): NewsResults => {
+					if (doc.date) {
+						doc.date = moment(doc.date).format('llll');
+					}
+					if (doc.link && !doc.displayLink) {
+						doc.displayLink = doc.link.replace(/.*?:\/\//g, '').split('/')[0];
+					}
 
-				// $FlowFixMe
-				return {
-					body: undefined,
-					date: doc.date,
-					link: doc.link,
-					title: doc.title,
-					summary: doc.snippet,
-					displayLink: doc.displayLink,
-					guid: `${doc.kind}:${doc.cacheId || doc.link || doc.date}`
-				};
+					// $FlowFixMe
+					return {
+						body: undefined,
+						date: doc.date,
+						link: doc.link,
+						title: doc.title,
+						summary: doc.snippet,
+						displayLink: doc.displayLink,
+						guid: `${doc.kind}:${doc.cacheId || doc.link || doc.date}`
+					};
+				});
 			});
-		});
 	},
 	article(config: Config, url: string): Promise {
 		const requestConfig = {
@@ -430,8 +427,8 @@ const news = {
 
 		return new Promise((res, rej) => {
 			request(requestConfig)
-			.then(resolve(res))
-			.catch(reject(rej));
+				.then(resolve(res))
+				.catch(reject(rej));
 		});
 	},
 	body(config: Config, response: Object): Promise {
@@ -447,14 +444,14 @@ const news = {
 			}
 
 			let promise = news.article(config, doc.link)
-			.then((response) => doc.body = response)
-			.catch(noop);
+				.then((response) => doc.body = response)
+				.catch(noop);
 
 			promises.push(promise);
 		}
 
 		return Promise.all(promises)
-		.then(() => response);
+			.then(() => response);
 	},
 	text(config: Config, response: Object): Promise {
 		let i = response.length;
@@ -470,16 +467,16 @@ const news = {
 
 
 			let promise = Promise.resolve()
-			.then(() => {
-				doc.body = stripHTML(config, doc.body, false);
-				doc.summary = doc.summary || doc.body.substring(0, 100);
-			});
+				.then(() => {
+					doc.body = stripHTML(config, doc.body, true);
+					doc.summary = doc.summary || doc.body.substring(0, 100);
+				});
 
 			promises.push(promise);
 		}
 
 		return Promise.all(promises)
-		.then(() => response);
+			.then(() => response);
 	}
 };
 

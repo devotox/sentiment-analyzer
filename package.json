@@ -9,9 +9,10 @@
 	},
 	"scripts": {
 		"flow": "flow",
-		"pretest": "npm run nsp && npm run jsinspect && npm run lint",
-		"jsinspect": "./node_modules/.bin/jsinspect -t 100 ./src",
-		"nsp": "./node_modules/.bin/nsp check",
+		"demo": "babel-node demo/demo",
+		"demo:test": "babel-node demo/test",
+		"pretest": "npm run jsinspect && npm run lint",
+		"jsinspect": "jsinspect -t 100 ./src",
 		"test": "mocha tests/",
 		"lint": "eslint ./",
 		"postrelease": "npm publish",
@@ -27,13 +28,13 @@
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
-		"axios": "0.17.1",
 		"@google-cloud/language": "1.1.0",
+		"axios": "0.17.1",
 		"bluebird": "3.5.1",
 		"cheerio": "1.0.0-rc.2",
 		"fluture": "8.0.0",
 		"google-finance": "0.1.10",
-		"google-stocks": "1.0.1",
+		"google-stocks": "devotox/google-stocks#patch-1",
 		"he": "1.1.1",
 		"indico.io": "0.10.5",
 		"lodash": "4.17.4",
@@ -47,13 +48,14 @@
 	},
 	"devDependencies": {
 		"babel-cli": "6.26.0",
+		"babel-eslint": "8.1.2",
 		"babel-plugin-transform-flow-strip-types": "6.22.0",
 		"babel-preset-flow": "6.23.0",
-		"flow-bin": "0.62.0",
 		"eslint": "4.14.0",
+		"eslint-plugin-flowtype": "2.40.1",
+		"flow-bin": "0.62.0",
 		"jsinspect": "0.12.7",
 		"mocha": "4.1.0",
-		"nsp": "3.1.0",
 		"sidekick": "1.12.2"
 	}
 }
