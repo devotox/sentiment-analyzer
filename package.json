@@ -34,7 +34,7 @@
 		"cheerio": "1.0.0-rc.2",
 		"fluture": "8.0.0",
 		"google-finance": "devotox/node-google-finance",
-		"google-stocks": "devotox/google-stocks#patch-1",
+		"google-stocks": "2.0.0",
 		"he": "1.1.1",
 		"indico.io": "0.10.5",
 		"lodash": "4.17.4",
