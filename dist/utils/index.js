@@ -6,7 +6,8 @@ const Promise = require('bluebird');
 const { get: existential } = require('lodash');
 
 const finance = require('google-finance');
-const financeToday = require('google-stocks');
+const googleStocks = require('google-stocks');
+const financeToday = googleStocks.default || googleStocks;
 
 const retext = require('retext');
 const retextSentiment = require('retext-sentiment');
