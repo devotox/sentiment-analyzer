@@ -52,7 +52,7 @@
 		"babel-plugin-transform-flow-strip-types": "6.22.0",
 		"babel-preset-flow": "6.23.0",
 		"eslint-plugin-flowtype": "2.41.0",
-		"eslint": "4.16.0",
+		"eslint": "4.17.0",
 		"flow-bin": "0.63.1",
 		"jsinspect": "0.12.7",
 		"mocha": "5.0.0",
