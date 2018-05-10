@@ -43,7 +43,7 @@
 		"request": "2.85.0",
 		"retext": "5.0.0",
 		"retext-sentiment": "4.1.0",
-		"textversionjs": "1.0.2",
+		"textversionjs": "1.1.1",
 		"yahoo-finance": "0.3.5"
 	},
 	"devDependencies": {
