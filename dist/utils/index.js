@@ -127,7 +127,7 @@ const stocks = {
 		let final = {};
 
 		symbols.forEach(symbol => {
-			final[symbol] = { values: [], news: [], about: {} };
+			final[symbol] = { quotes: [], news: [], about: {} };
 		});
 
 		Object.keys(historical).forEach(index => {
@@ -164,7 +164,7 @@ const stocks = {
 					});
 				}
 
-				final[index].values.unshift(finalStock);
+				final[index].quotes.unshift(finalStock);
 				lastClose = stock.close;
 			});
 		});
@@ -213,7 +213,7 @@ const stocks = {
 				}
 			};
 
-			final[index].values.unshift(finalStock);
+			final[index].quotes.unshift(finalStock);
 		});
 
 		Object.keys(news).forEach(index => {
