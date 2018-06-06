@@ -127,7 +127,7 @@ const stocks = {
 		let final = {};
 
 		symbols.forEach(symbol => {
-			final[symbol] = { quotes: [], news: [], about: {} };
+			final[symbol] = { quotes: [], news: [], meta: {} };
 		});
 
 		Object.keys(historical).forEach(index => {
@@ -171,11 +171,9 @@ const stocks = {
 
 		Object.keys(current).forEach(index => {
 			let currentStocks = current[index];
-			final[index].about = currentStocks;
+			final[index].meta = currentStocks;
 
 			let stock = currentStocks.price;
-			final[index].exchange = stock.exchange;
-			final[index].marketState = stock.marketState;
 
 			let finalStock = {
 				volume: 'N/A',
