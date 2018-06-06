@@ -127,7 +127,7 @@ const stocks = {
 		let final = {};
 
 		symbols.forEach(symbol => {
-			final[symbol] = { quotes: [], news: [], meta: {} };
+			final[symbol] = { quotes: {}, meta: {}, news: [] };
 		});
 
 		Object.keys(historical).forEach(index => {
@@ -136,6 +136,8 @@ const stocks = {
 			let lastClose = false;
 
 			historicalStocks.forEach(stock => {
+				let date = moment(stock.date).format('YYYYMMDD');
+
 				let finalStock = {
 					volume: stock.volume,
 					date: moment(stock.date).format('llll'),
@@ -164,7 +166,7 @@ const stocks = {
 					});
 				}
 
-				final[index].quotes.unshift(finalStock);
+				final[index].quotes[date] = finalStock;
 				lastClose = stock.close;
 			});
 		});
@@ -174,10 +176,11 @@ const stocks = {
 			final[index].meta = currentStocks;
 
 			let stock = currentStocks.price;
+			let date = moment(stock.regularMarketTime).format('YYYYMMDD');
 
 			let finalStock = {
 				volume: 'N/A',
-				date: moment().format('llll'),
+				date: moment(stock.regularMarketTime).format('llll'),
 				price: {
 					low: parseFloat(stock.regularMarketDayLow),
 					value: parseFloat(stock.regularMarketPrice),
@@ -211,7 +214,7 @@ const stocks = {
 				}
 			};
 
-			final[index].quotes.unshift(finalStock);
+			final[index].quotes[date] = finalStock;
 		});
 
 		Object.keys(news).forEach(index => {
