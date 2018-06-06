@@ -1,6 +1,6 @@
 {
 	"name": "sentiment-analyzer",
-	"version": "1.1.5",
+	"version": "2.0.0",
 	"description": "Sentiment Analyzer",
 	"main": "index.js",
 	"repository": {

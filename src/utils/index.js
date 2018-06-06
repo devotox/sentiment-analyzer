@@ -255,19 +255,19 @@ const stocks = {
 
 		});
 
-		// Object.keys(news).forEach(index => {
-		// 	final[index].news = news[index];
+		Object.keys(news).forEach(index => {
+			final[index].news = news[index];
 
-		// 	final[index].news.reverse()
-		// 		.forEach((article) => {
-		// 			if (article.date) {
-		// 				article.date = moment(article.date).format('llll');
-		// 			}
-		// 			if (article.link && !article.displayLink) {
-		// 				article.displayLink = article.link.replace(/.*?:\/\//g, '').split('/')[0];
-		// 			}
-		// 		});
-		// });
+			final[index].news.reverse()
+				.forEach((article) => {
+					if (article.date) {
+						article.date = moment(article.date).format('llll');
+					}
+					if (article.link && !article.displayLink) {
+						article.displayLink = article.link.replace(/.*?:\/\//g, '').split('/')[0];
+					}
+				});
+		});
 
 		return final;
 	},
