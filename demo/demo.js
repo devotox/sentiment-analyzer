@@ -43,8 +43,8 @@ const getStocks = (topic) => {
 
 const run = (topic) => {
 	return Promise.all([
-		getNews(topic).then(addSentiment),
-		getStocks(topic).then(addStockSentiment)
+		//getNews(topic).then(addSentiment),
+		getStocks(topic) // .then(addStockSentiment)
 	]);
 };
 

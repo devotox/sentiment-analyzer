@@ -5,13 +5,11 @@ const cheerio = require('cheerio');
 const Promise = require('bluebird');
 const { get: existential } = require('lodash');
 
-const finance = require('google-finance');
-const financeToday = require('google-stocks');
-
 const retext = require('retext');
 const retextSentiment = require('retext-sentiment');
 
 const search = require('./search');
+const finance = require('yahoo-finance');
 const textVersion = require('textversionjs');
 
 let today = moment().format('YYYY-MM-DD');
@@ -87,18 +85,19 @@ const stocks = {
 		let symbols = query.toUpperCase().split(',').map(v => v.trim());
 		return Promise.props({
 			current: stocks.current(symbols),
-			news: stocks.news(symbols, config),
+			// news: stocks.news(symbols, config),
 			historical: stocks.historical(symbols, config)
-		}).then(({ current, news, historical }) => {
+		}).then(({ current, historical, news = {} }) => {
 			return stocks.merge({ symbols, current, historical, news });
 		});
 	},
 	current(symbols) {
-		return new Promise((resolve, reject) => {
-			financeToday(symbols, (error, data) => {
-				error ? reject(new Error(error)) : resolve(data);
-			});
-		});
+		let currentData = {};
+		let options = ['summaryDetail', 'summaryProfile', 'price', 'earnings', 'financialData', 'calendarEvents', 'defaultKeyStatistics', 'recommendationTrend', 'upgradeDowngradeHistory'];
+
+		return Promise.map(symbols, symbol => {
+			return finance.quote(symbol, options).then(data => currentData[symbol] = data);
+		}).then(() => currentData);
 	},
 	historical(symbols, options) {
 		return new Promise((resolve, reject) => {
@@ -128,7 +127,7 @@ const stocks = {
 		let final = {};
 
 		symbols.forEach(symbol => {
-			final[symbol] = { values: [], news: [] };
+			final[symbol] = { values: [], news: [], about: {} };
 		});
 
 		Object.keys(historical).forEach(index => {
@@ -141,17 +140,16 @@ const stocks = {
 					volume: stock.volume,
 					date: moment(stock.date).format('llll'),
 					price: {
-						value: stock.close,
+						low: stock.low,
 						high: stock.high,
-						low: stock.low
-					},
-					change: {
-						value: 'N/A',
-						positive: false,
-						percentage: 'N/A'
-					},
-					lastTradeTime: {
-						value: 'N/A'
+						value: stock.close,
+						adj: stock.adjClose,
+						lastTradeTime: 'N/A',
+						change: {
+							value: 'N/A',
+							positive: false,
+							percentage: 'N/A'
+						}
 					}
 				};
 
@@ -159,7 +157,7 @@ const stocks = {
 					let changeValue = (stock.close - lastClose).toFixed(2);
 					let changeValuePercentage = (parseFloat(changeValue) / stock.close * 100).toFixed(2);
 
-					Object.assign(finalStock.change, {
+					Object.assign(finalStock.price.change, {
 						value: changeValue,
 						percentage: changeValuePercentage,
 						positive: parseFloat(changeValue) >= 0
@@ -171,33 +169,46 @@ const stocks = {
 			});
 		});
 
-		current.forEach(stock => {
-			let index = stock.t;
-			final[index].exchange = stock.e;
+		Object.keys(current).forEach(index => {
+			let currentStocks = current[index];
+			final[index].about = currentStocks;
+
+			let stock = currentStocks.price;
+			final[index].exchange = stock.exchange;
+			final[index].marketState = stock.marketState;
 
 			let finalStock = {
 				volume: 'N/A',
 				date: moment().format('llll'),
 				price: {
-					value: parseFloat(stock.l),
-					extended: {
-						value: parseFloat(stock.el)
+					low: parseFloat(stock.regularMarketDayLow),
+					value: parseFloat(stock.regularMarketPrice),
+					high: parseFloat(stock.regularMarketDayHigh),
+					lastTradeTime: moment(stock.regularMarketTime).format('llll'),
+					change: {
+						value: parseFloat(stock.regularMarketChange),
+						positive: parseFloat(stock.regularMarketChange) >= 0,
+						percentage: parseFloat(stock.regularMarketChangePercent)
 					}
 				},
-				change: {
-					value: parseFloat(stock.c),
-					percentage: parseFloat(stock.cp),
-					positive: parseFloat(stock.c) >= 0,
-					extended: {
-						value: parseFloat(stock.ec),
-						percentage: parseFloat(stock.ecp),
-						positive: parseFloat(stock.ec) >= 0
-					}
-				},
-				lastTradeTime: {
-					value: moment(stock.lt, 'MMM DD, H:ma').format('llll'),
-					extended: {
-						value: moment(stock.elt, 'MMM DD, H:ma').format('llll')
+				extended: {
+					pre: {
+						value: parseFloat(stock.preMarketPrice),
+						lastTradeTime: moment(stock.preMarketTime).format('llll'),
+						change: {
+							value: parseFloat(stock.preMarketChange),
+							positive: parseFloat(stock.preMarketChange) >= 0,
+							percentage: parseFloat(stock.preMarketChangePercent)
+						}
+					},
+					post: {
+						value: parseFloat(stock.postMarketPrice),
+						lastTradeTime: moment(stock.postMarketTime).format('llll'),
+						change: {
+							value: parseFloat(stock.postMarketChange),
+							positive: parseFloat(stock.postMarketChange) >= 0,
+							percentage: parseFloat(stock.postMarketChangePercent)
+						}
 					}
 				}
 			};
@@ -205,18 +216,19 @@ const stocks = {
 			final[index].values.unshift(finalStock);
 		});
 
-		Object.keys(news).forEach(index => {
-			final[index].news = news[index];
+		// Object.keys(news).forEach(index => {
+		// 	final[index].news = news[index];
 
-			final[index].news.reverse().forEach(article => {
-				if (article.date) {
-					article.date = moment(article.date).format('llll');
-				}
-				if (article.link && !article.displayLink) {
-					article.displayLink = article.link.replace(/.*?:\/\//g, '').split('/')[0];
-				}
-			});
-		});
+		// 	final[index].news.reverse()
+		// 		.forEach((article) => {
+		// 			if (article.date) {
+		// 				article.date = moment(article.date).format('llll');
+		// 			}
+		// 			if (article.link && !article.displayLink) {
+		// 				article.displayLink = article.link.replace(/.*?:\/\//g, '').split('/')[0];
+		// 			}
+		// 		});
+		// });
 
 		return final;
 	},
