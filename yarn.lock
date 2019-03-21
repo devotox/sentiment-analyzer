@@ -1846,10 +1846,10 @@ flow-bin@0.94.0:
   resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.94.0.tgz#b5d58fe7559705b73a18229f97edfc3ab6ffffcb"
   integrity sha512-DYF7r9CJ/AksfmmB4+q+TyLMoeQPRnqtF1Pk7KY3zgfkB/nVuA3nXyzqgsIPIvnMSiFEXQcFK4z+iPxSLckZhQ==
 
-fluture@11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/fluture/-/fluture-11.0.0.tgz#ebb8c391d44c631696c9bc8d2af0f65077c9fc89"
-  integrity sha512-7Ouec9vMCUqtLTFUq21wKJd0IZqt6TlIomV7GdVvEmtXptftuWBRgL/LO91Shfa72fj2CwnG0740zvl2GxEq+Q==
+fluture@11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/fluture/-/fluture-11.0.1.tgz#e7b0dace991bbe9670e73aa35cd170147ae00f4b"
+  integrity sha512-3sLKXzScs6mQByQefKrlJ4D6dPPIIcy6yvDivnUzs4GNxaKBLAQu9vxkZ9WQpFb7BuhpQgS+sr6z/+f4KLGrOg==
   dependencies:
     concurrify "^1.1.1"
     sanctuary-show "^1.0.0"
