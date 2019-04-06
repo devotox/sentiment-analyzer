@@ -32,7 +32,7 @@
 		"@google-cloud/language": "2.0.1",
 		"axios": "0.18.0",
 		"bluebird": "3.5.3",
-		"cheerio": "1.0.0-rc.2",
+		"cheerio": "1.0.0-rc.3",
 		"fluture": "11.0.0",
 		"he": "1.2.0",
 		"indico.io": "0.10.5",
