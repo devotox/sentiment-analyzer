@@ -55,7 +55,7 @@
 		"eslint-plugin-flowtype": "3.4.2",
 		"flow-bin": "0.94.0",
 		"jsinspect": "0.12.7",
-		"mocha": "6.0.2",
+		"mocha": "6.1.0",
 		"sidekick": "1.12.2"
 	}
 }
