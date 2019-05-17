@@ -24,16 +24,16 @@
 		"preversion": "sidekick run && npm run build && npm test",
 		"build": "rm -rf ./dist/* && ./node_modules/.bin/babel src -d dist",
 		"dev": "rm -rf ./dist/* && ./node_modules/.bin/babel -w src -d dist",
-		"update:packages": "npx ncu -u -a --removeRange && yarn install --force --check-files --update-checksums --ignore-engines && yarn upgrade --force --ignore-engines"
+		"update:packages": "npx ncu -u --removeRange && yarn install --force --check-files --update-checksums --ignore-engines && yarn upgrade --force --ignore-engines"
 	},
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
-		"@google-cloud/language": "2.0.1",
+		"@google-cloud/language": "2.1.0",
 		"axios": "0.18.0",
-		"bluebird": "3.5.3",
-		"cheerio": "1.0.0-rc.2",
-		"fluture": "11.0.0",
+		"bluebird": "3.5.4",
+		"cheerio": "1.0.0-rc.3",
+		"fluture": "11.0.1",
 		"he": "1.2.0",
 		"indico.io": "0.10.5",
 		"lodash": "4.17.11",
@@ -51,11 +51,11 @@
 		"babel-plugin-transform-flow-strip-types": "6.22.0",
 		"babel-preset-flow": "6.23.0",
 		"chai": "4.2.0",
-		"eslint": "5.15.1",
-		"eslint-plugin-flowtype": "3.4.2",
-		"flow-bin": "0.94.0",
+		"eslint": "5.16.0",
+		"eslint-plugin-flowtype": "3.9.0",
+		"flow-bin": "0.98.1",
 		"jsinspect": "0.12.7",
-		"mocha": "6.0.2",
+		"mocha": "6.1.4",
 		"sidekick": "1.12.2"
 	}
 }

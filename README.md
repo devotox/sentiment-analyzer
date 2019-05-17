@@ -5,8 +5,8 @@
 [![Coverage Status](https://codecov.io/gh/devotox/sentiment-analyzer/branch/master/graph/badge.svg)](https://codecov.io/gh/devotox/sentiment-analyzer)
 [![NPM Version](https://badge.fury.io/js/sentiment-analyzer.svg)](http://badge.fury.io/js/sentiment-analyzer)
 [![NPM Downloads](https://img.shields.io/npm/dm/sentiment-analyzer.svg)](https://www.npmjs.org/package/sentiment-analyzer)
-[![Dependency Status](https://david-dm.org/poetic/sentiment-analyzer.svg)](https://david-dm.org/poetic/sentiment-analyzer)
-[![DevDependency Status](https://david-dm.org/poetic/sentiment-analyzer/dev-status.svg)](https://david-dm.org/poetic/sentiment-analyzer#info=devDependencies)
+[![Dependency Status](https://david-dm.org/devotox/sentiment-analyzer.svg)](https://david-dm.org/devotox/sentiment-analyzer)
+[![DevDependency Status](https://david-dm.org/devotox/sentiment-analyzer/dev-status.svg)](https://david-dm.org/devotox/sentiment-analyzer#info=devDependencies)
 [![Greenkeeper](https://badges.greenkeeper.io/devotox/sentiment-analyzer.svg)](https://greenkeeper.io/)
 
 ## Description
