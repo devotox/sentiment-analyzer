@@ -52,7 +52,7 @@
 		"babel-preset-flow": "6.23.0",
 		"chai": "4.2.0",
 		"eslint": "5.16.0",
-		"eslint-plugin-flowtype": "3.9.0",
+		"eslint-plugin-flowtype": "3.9.1",
 		"flow-bin": "0.98.1",
 		"jsinspect": "0.12.7",
 		"mocha": "6.1.4",
