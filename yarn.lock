@@ -4094,10 +4094,10 @@ retext-stringify@^2.0.0:
   dependencies:
     nlcst-to-string "^2.0.0"
 
-retext@6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/retext/-/retext-6.0.1.tgz#290bd152696011da4f8b1aa2e532b7ee1204569f"
-  integrity sha512-+AdE0+PxijN3jswdMlg0xJHb3cBKCeNJ+a+k+leB6mE6q7X2wSG3IPkCFiaghrsV5vL0a2h2XmTazsqyIRAFTw==
+retext@6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/retext/-/retext-6.0.2.tgz#005df1c83bdd6a238f98cd60899f4c140f67b26a"
+  integrity sha512-CxpBywVxRjzikCRrC6Z87KzqzuSbCDLLqpQSzjzE0xlzPaZemZiywCHEzX7eSWRdXY5006rYgD7Zm4BCyzFxvg==
   dependencies:
     retext-latin "^2.0.0"
     retext-stringify "^2.0.0"
