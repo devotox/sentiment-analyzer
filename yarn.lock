@@ -4079,10 +4079,10 @@ retext-latin@^2.0.0:
     parse-latin "^4.0.0"
     unherit "^1.0.4"
 
-retext-sentiment@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/retext-sentiment/-/retext-sentiment-4.1.1.tgz#88b31de1be9cd1f77e619af90b34fa5c217a76f3"
-  integrity sha512-4QTDMELmV19hgZjP4jTr7eqEHS/OnQHhQN7NDPkM3BZBw1anHKYesjTnOlFS/t33GrUnUbdh0b0cqEc1c7d2og==
+retext-sentiment@4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/retext-sentiment/-/retext-sentiment-4.1.2.tgz#ec60e519e9c6f3b92231e3f70e46b16411c6b662"
+  integrity sha512-cHHDNRViAjRZnmlJp96m2pIMJUec6ZLLWz2HK7x659oku45xQEcylQj5F7rSY+9dyhi+4rgJIo50KKWhfL5R5Q==
   dependencies:
     nlcst-to-string "^2.0.0"
     unist-util-visit "^1.0.0"
