@@ -35,7 +35,7 @@
 		"cheerio": "1.0.0-rc.3",
 		"fluture": "11.0.1",
 		"he": "1.2.0",
-		"indico.io": "0.10.5",
+		"indico.io": "0.10.6",
 		"lodash": "4.17.11",
 		"moment": "2.24.0",
 		"ramda": "0.26.1",

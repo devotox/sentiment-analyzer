@@ -2352,10 +2352,10 @@ indent-string@^2.1.0:
   dependencies:
     repeating "^2.0.0"
 
-indico.io@0.10.5:
-  version "0.10.5"
-  resolved "https://registry.yarnpkg.com/indico.io/-/indico.io-0.10.5.tgz#f301d04bde51d8204fd1a15a424e69e7e59a6937"
-  integrity sha1-8wHQS95R2CBP0aFaQk5p5+WaaTc=
+indico.io@0.10.6:
+  version "0.10.6"
+  resolved "https://registry.yarnpkg.com/indico.io/-/indico.io-0.10.6.tgz#4a8cad71809ae56ef9bd6014719a2a40972c4949"
+  integrity sha512-pWA5Ai63pePEnTMlKvBd7Hpag52Fo3/kuZ9PstV46RuHlVG+krHixtJUJ9K31JylTRPJ9QmG+WBTfja5lA4IaA==
   dependencies:
     bluebird "^2.9.24"
     config-ini "^0.2.2"
