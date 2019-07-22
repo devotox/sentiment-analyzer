@@ -51,7 +51,7 @@
 		"babel-plugin-transform-flow-strip-types": "6.22.0",
 		"babel-preset-flow": "6.23.0",
 		"chai": "4.2.0",
-		"eslint": "5.16.0",
+		"eslint": "6.1.0",
 		"eslint-plugin-flowtype": "3.10.3",
 		"flow-bin": "0.102.0-rc",
 		"jsinspect": "0.12.7",
