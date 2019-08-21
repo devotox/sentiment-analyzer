@@ -53,7 +53,7 @@
 		"chai": "4.2.0",
 		"eslint": "6.2.1",
 		"eslint-plugin-flowtype": "3.10.3",
-		"flow-bin": "0.102.0-rc",
+		"flow-bin": "0.105.2",
 		"jsinspect": "0.12.7",
 		"mocha": "6.1.4",
 		"sidekick": "1.12.2"
