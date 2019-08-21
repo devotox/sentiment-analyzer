@@ -90,13 +90,12 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@google-cloud/language@3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@google-cloud/language/-/language-3.2.1.tgz#50b1449f5121ea271d0054f13cdd5e94039d6cd0"
-  integrity sha512-KfYzdemgVO6WPXYg8v4hWTExzf500Udbl2O4fvKzj6KxvhSiwtE6EwYfGArXezzQGH3+6fhI/AqMBqHUawp/hQ==
+"@google-cloud/language@3.2.6":
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/@google-cloud/language/-/language-3.2.6.tgz#60f55c4bdd2a9f0994459af6a50c62e976589a66"
+  integrity sha512-zwTi4pXl34ogbX5LI4mOcHU+PNLiqM//6jC9DG0OqEHtuENtS1yuVMbnQEzTDk+5j5UuKERUF4Rq6jUqLcrTcA==
   dependencies:
     google-gax "^1.0.0"
-    lodash.merge "^4.6.1"
 
 "@grpc/grpc-js@^0.5.2":
   version "0.5.2"
@@ -2956,11 +2955,6 @@ lodash.has@^4.5.2:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/lodash.has/-/lodash.has-4.5.2.tgz#d19f4dc1095058cccbe2b0cdf4ee0fe4aa37c862"
   integrity sha1-0Z9NwQlQWMzL4rDN9O4P5Ko3yGI=
-
-lodash.merge@^4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.1.tgz#adc25d9cb99b9391c59624f379fbba60d7111d54"
-  integrity sha512-AOYza4+Hf5z1/0Hztxpm2/xiPZgi/cjMqdnKTUWTBSKchJlxXXuUSxCCl8rJlf4g6yww/j6mA8nC8Hw/EZWxKQ==
 
 lodash@3.10.1, lodash@^3.10.1, lodash@~3.10.1:
   version "3.10.1"
