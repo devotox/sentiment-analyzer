@@ -2828,9 +2828,9 @@ jsonpointer@^4.0.0:
   integrity sha1-T9kss04OnbPInIYi7PUfm5eMbLk=
 
 jsonschema@^1.1.0:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/jsonschema/-/jsonschema-1.2.4.tgz#a46bac5d3506a254465bc548876e267c6d0d6464"
-  integrity sha512-lz1nOH69GbsVHeVgEdvyavc/33oymY1AZwtePMiMj4HZPMbP5OIKK3zT9INMWjwua/V4Z4yq7wSlBbSG+g4AEw==
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/jsonschema/-/jsonschema-1.2.5.tgz#bab69d97fa28946aec0a56a9cc266d23fe80ae61"
+  integrity sha512-kVTF+08x25PQ0CjuVc0gRM9EUPb0Fe9Ln/utFOgcdxEIOHuU7ooBk/UPTd7t1M91pP35m0MU1T8M5P7vP1bRRw==
 
 jsprim@^1.2.2:
   version "1.4.1"
