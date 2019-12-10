@@ -90,12 +90,12 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@google-cloud/language@3.2.6":
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/@google-cloud/language/-/language-3.2.6.tgz#60f55c4bdd2a9f0994459af6a50c62e976589a66"
-  integrity sha512-zwTi4pXl34ogbX5LI4mOcHU+PNLiqM//6jC9DG0OqEHtuENtS1yuVMbnQEzTDk+5j5UuKERUF4Rq6jUqLcrTcA==
+"@google-cloud/language@3.6.3":
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/@google-cloud/language/-/language-3.6.3.tgz#9bdf462d6b5d4d0164c2c98f867b52abf15c9849"
+  integrity sha512-wwlydvQp1HLS+DMTT7Oc1B8XtyMov5BVgGhTuTBXb85ijfLN4NGgtkWu56CUF1aOIlDs8HNCueSUZPKaLKIjcw==
   dependencies:
-    google-gax "^1.0.0"
+    google-gax "^1.7.5"
 
 "@grpc/grpc-js@^0.6.12":
   version "0.6.13"
@@ -2130,7 +2130,7 @@ google-auth-library@^5.0.0:
     jws "^3.1.5"
     lru-cache "^5.0.0"
 
-google-gax@^1.0.0:
+google-gax@^1.7.5:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/google-gax/-/google-gax-1.12.0.tgz#f926f7e6abda245db38ecbebbbf58daaf3a8f687"
   integrity sha512-BeeoxVO6y9K20gUsexUwptutd0PfrTItrA02JWwwstlBIOAcvgFp86MHWufQsnrkPVhxBjHXq65aIkSejtJjDg==
