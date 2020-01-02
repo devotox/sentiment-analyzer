@@ -31,7 +31,7 @@
 	"dependencies": {
 		"@google-cloud/language": "3.2.6",
 		"axios": "0.19.0",
-		"bluebird": "3.5.5",
+		"bluebird": "3.7.2",
 		"cheerio": "1.0.0-rc.3",
 		"fluture": "11.0.2",
 		"he": "1.2.0",
