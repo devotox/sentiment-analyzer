@@ -1110,14 +1110,6 @@ concat-stream@^1.5.1:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-concurrify@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/concurrify/-/concurrify-1.1.1.tgz#e903b6500b2ce9af7ac51bd5f2161f8db33cfb41"
-  integrity sha512-m2UMqZAJ7Ys4Juu0IaToa/RbVuu5jR8dGVrwUOeQtfJjX0KDimUdPZ20tVrdSuqJwLaFbpI+lWxOmZSYxyCvmQ==
-  dependencies:
-    sanctuary-show "^1.0.0"
-    sanctuary-type-identifiers "^2.0.0"
-
 config-ini@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/config-ini/-/config-ini-0.2.2.tgz#578e6164b5195c3e53fe2973fc1d6dfe08960144"
@@ -1823,12 +1815,11 @@ flow-bin@0.105.2:
   resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.105.2.tgz#9d03d5ae3e1d011e311f309cb8786b3b3695fec2"
   integrity sha512-VCHt0SCjFPviv/Ze/W7AgkcE0uH4TocypSFA8wR3ZH1P7BSjny4l3uhHyOjzU3Qo1i0jO4NyaU6q3Y5IaQ6xng==
 
-fluture@11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/fluture/-/fluture-11.0.2.tgz#0605a3c18f0566c9ed4ceb77ccec476b27c70f2c"
-  integrity sha512-bPE4MYozgZ1cPbItZ0gFQI8qi1wBGFx67C/J0a62aLC7QfJNxZ7lFaOwfVkRfgwY9D+v0/1fA6PG8QRDc7BrKA==
+fluture@12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/fluture/-/fluture-12.1.0.tgz#1fda88b2544e126bdc32fded79e8feb37bb4b50d"
+  integrity sha512-z3m4PXh8aRm00mRE/M+sRhZeQrYmpZnmeq89TEm3dtEp2CGt+XNbv7jagsGAZzfscRBaz/yAR5dIVD8KPoNhtQ==
   dependencies:
-    concurrify "^1.1.1"
     sanctuary-show "^1.0.0"
     sanctuary-type-identifiers "^2.0.0"
 
