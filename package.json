@@ -33,7 +33,7 @@
 		"axios": "0.19.2",
 		"bluebird": "3.7.2",
 		"cheerio": "1.0.0-rc.3",
-		"fluture": "12.1.1",
+		"fluture": "12.2.0",
 		"he": "1.2.0",
 		"indico.io": "0.10.6",
 		"lodash": "4.17.15",

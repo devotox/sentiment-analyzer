@@ -1823,12 +1823,12 @@ flow-bin@0.118.0:
   resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.118.0.tgz#fb706364a58c682d67a2ca7df39396467dc397d1"
   integrity sha512-jlbUu0XkbpXeXhan5xyTqVK1jmEKNxE8hpzznI3TThHTr76GiFwK0iRzhDo4KNy+S9h/KxHaqVhTP86vA6wHCg==
 
-fluture@12.1.1:
-  version "12.1.1"
-  resolved "https://registry.yarnpkg.com/fluture/-/fluture-12.1.1.tgz#9e1ccf7ed67ef79fe94e634155f84077514482c9"
-  integrity sha512-fj2a48sR/r8lfgauiz3FGDqmF9tt66UAVbRb4j42LGg1qcuEyTFdzlH6HsJh8aDrrc0bcXw86OgIfhu6tcpqRA==
+fluture@12.2.0:
+  version "12.2.0"
+  resolved "https://registry.yarnpkg.com/fluture/-/fluture-12.2.0.tgz#40de127c88a4cb845b9f2292b89b91f53784a6bc"
+  integrity sha512-3Hs5gGA5/o1Fkz7jXndR6FStKD3VXJdto8WWvSMY5MRm0u6tJ51kxn/V+hpbSkkSlYd7TZ0hUVJ07iJPP7DS2w==
   dependencies:
-    sanctuary-show "^1.0.0"
+    sanctuary-show "^2.0.0"
     sanctuary-type-identifiers "^2.0.0"
 
 follow-redirects@0.0.7:
@@ -4171,10 +4171,10 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sanctuary-show@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/sanctuary-show/-/sanctuary-show-1.0.0.tgz#72deb4812f9decec850e03286807dca1c97a1d61"
-  integrity sha512-63UqNGr5M6wkzKp6eGc/Gy6JBIV2PbzPd3q88+0F9z0qydAQsCWJ+7e4oor39rEEwj2GkZMDEhqGuiMl9eEnYw==
+sanctuary-show@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-show/-/sanctuary-show-2.0.0.tgz#2326b4744f4b0f993f18ca56a29f68a50f514637"
+  integrity sha512-REj4ZiioUXnDLj6EpJ9HcYDIEGaEexmB9Fg5o6InZR9f0x5PfnnC21QeU9SZ9E7G8zXSZPNjy8VRUK4safbesw==
 
 sanctuary-type-identifiers@^2.0.0:
   version "2.0.1"
