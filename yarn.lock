@@ -90,10 +90,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@google-cloud/language@3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@google-cloud/language/-/language-3.7.1.tgz#64e60f6d2c82cc26c46816a3f41012772526ecae"
-  integrity sha512-yA96htfUvIyMccaD9JoVc5nZf22OZ6NCYvKc+ZcXwpP2a4UhNX90LlMjWq487lLwlyKesOOeMu3d72E+4yIpHg==
+"@google-cloud/language@3.7.2":
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/@google-cloud/language/-/language-3.7.2.tgz#47ef16451deee7fb3424601f6562040d8cdbf80f"
+  integrity sha512-CKcxMNEMeCzzjSYQ/fixA+18dwR4VJsR4fKdabr+J5dEPldxxvEMyivRxkEaPR0sBpl4n/79eiHAAf+Qp3fguQ==
   dependencies:
     google-gax "^1.9.0"
 
