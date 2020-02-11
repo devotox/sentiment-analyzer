@@ -39,7 +39,7 @@
 		"lodash": "4.17.15",
 		"moment": "2.24.0",
 		"ramda": "0.27.0",
-		"request": "2.88.0",
+		"request": "2.88.2",
 		"retext": "7.0.1",
 		"retext-sentiment": "4.1.2",
 		"textversionjs": "1.1.3",
