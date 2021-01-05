@@ -30,7 +30,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"@google-cloud/language": "3.7.2",
-		"axios": "0.19.2",
+		"axios": "0.21.1",
 		"bluebird": "3.7.2",
 		"cheerio": "1.0.0-rc.3",
 		"fluture": "12.2.0",
